@@ -27,6 +27,7 @@ async function addBlog(req, res) {
   try {
     const blog = new Blog(req.body);
     await blog.save();
+    console.log(req.body.title);
 
     res.status(201).send("Blog created successfully!");
   } catch (e) {

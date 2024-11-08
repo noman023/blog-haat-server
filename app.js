@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -10,6 +11,11 @@ const routes = require("./routes/index");
 
 // middlewares
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+  })
+);
 app.use(routes);
 
 // error handler
