@@ -35,4 +35,23 @@ async function addBlog(req, res) {
   }
 }
 
-module.exports = { getAllBlogs, getSingleBlog, addBlog };
+async function updateBlog(req, res) {
+  try {
+    const id = req.params.id;
+    const data = req.body;
+
+    const dataToUpdate = {};
+    if (data.title) dataToUpdate.title = data.title;
+    if (data.content) dataToUpdate.content = data.content;
+    if (data.category) dataToUpdate.category = data.category;
+
+    // Update the blog with the new data
+    await Blog.findByIdAndUpdate(id, { $set: dataToUpdate });
+
+    return res.status(200).send("Blog updated successfully!");
+  } catch (error) {
+    res.status(500).send("Error updating blog: " + e.message);
+  }
+}
+
+module.exports = { getAllBlogs, getSingleBlog, addBlog, updateBlog };
