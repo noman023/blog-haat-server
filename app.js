@@ -13,7 +13,11 @@ const routes = require("./routes/index");
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+      "http://localhost:5173",
+      "https://blog-haat.firebaseapp.com",
+      "https://blog-haat.web.app",
+    ],
   })
 );
 app.use(routes);
