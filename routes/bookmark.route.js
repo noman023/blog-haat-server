@@ -1,14 +1,14 @@
 const {
+  getBookmarksForUser,
   addToBookmark,
-  getAllBookmarkedBlogs,
-  getSingleBookmarkedBlog,
+  deleteBookmark,
 } = require("../controllers/bookmark.controller");
 
 const router = require("express").Router();
 
 router
-  .get("/", getAllBookmarkedBlogs)
-  .get("/:id", getSingleBookmarkedBlog)
-  .post("/add", addToBookmark);
+  .get("/", getBookmarksForUser)
+  .post("/add", addToBookmark)
+  .delete("/:id", deleteBookmark);
 
 module.exports = router;
